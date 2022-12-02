@@ -1,0 +1,14 @@
+
+<%- include('partials/header.ejs')  %> 
+
+<h1>This is Home Page</h1>
+
+<form action="/home" method="post">
+    <input type="text" name="searchInput" id="">
+    <button type="submit">Search</button>
+</form>
+<% for (let i=0; i<arr.length; i++) { %>
+        <p><%= arr[i] %> </p>
+    <% } %>  
+
+<%- include('partials/footer.ejs')  %> 
