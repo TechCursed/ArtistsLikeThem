@@ -14,8 +14,13 @@ let arr = []
 let apiData = []
 
 app.get('/', (req,res) => {
-  res.render('home', {arr: apiData})
+        res.render('home')
 })
+
+app.get('/results', (req,res) => {
+    res.render('results', {arr: apiData})
+
+  })
 
 // app.post('/home', (req,res) => {
 //    artistName = req.body.searchInput
@@ -23,12 +28,10 @@ app.get('/', (req,res) => {
 //    res.redirect('/')
 // })
 
-app.post('/home', (req,res) => {
+app.post('/results', (req,res) => {
     artistName = req.body.searchInput
     let url = `https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=${artistName}&api_key=dd8013a2d0275a318511e02e3a3e2e4f&format=json`
-    apiData.splice(0,apiData.length)
-
-
+    
     https.get(url, function (response) { 
 
         let chunks="";
@@ -42,19 +45,20 @@ app.post('/home', (req,res) => {
             res = JSON.parse(chunks);
             //console.log(res.similarartists.artist[6].name)
             // code after parse string into JSON format
+            // const len = res.similarartists.artist.name.length
+
             for(let i=0; i<10; i++)
             {
                // console.log(res.similarartists.artist[i].name)
                 arr.push(res.similarartists.artist[i].name)
             }
            // console.log(arr)
+           //console.log("len is : " +len)
         });
-
+        apiData.push(arr)
 });
-    
-    apiData.push(arr)
-    console.log(apiData)
-    res.redirect('/')
+  //  console.log(arr)
+  res.redirect('/results')
  })
 
 
