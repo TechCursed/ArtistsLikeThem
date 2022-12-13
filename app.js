@@ -11,15 +11,16 @@ app.use(express.static('public'))
 app.set('view engine', 'ejs')
 
 let arr = []
-let apiData = []
+let links = []
+//let apiData = []
 
 app.get('/', (req,res) => {
         res.render('home')
+        //console.log(apiData)
 })
 
 app.get('/results', (req,res) => {
-    res.render('results', {arr: apiData})
-
+    res.render('results', {arr: arr, links:links})
   })
 
 // app.post('/home', (req,res) => {
@@ -49,15 +50,19 @@ app.post('/results', (req,res) => {
 
             for(let i=0; i<10; i++)
             {
-               // console.log(res.similarartists.artist[i].name)
                 arr.push(res.similarartists.artist[i].name)
+                links.push(res.similarartists.artist[i].url)
             }
-           // console.log(arr)
+
+           arr.toString
+           //apiData.push(arr)
            //console.log("len is : " +len)
+           //console.log(apiData)
+
         });
-        apiData.push(arr)
+        
+        //apiData.push(arr)
 });
-  //  console.log(arr)
   res.redirect('/results')
  })
 
