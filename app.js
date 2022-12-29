@@ -9,29 +9,20 @@ require('dotenv').config()
 
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static('public'))
-
 app.set('view engine', 'ejs')
 
+const port = process.env.PORT || 3030
 let arr = []
 let links = []
-//let apiData = []
 
 app.get('/', (req,res) => {
     
         res.render('home')
-        //console.log(apiData)
 })
 
 app.get('/results', (req,res) => {
     res.render('results', {arr: arr, links:links, artistName: artistName})
   })
-
-// app.post('/home', (req,res) => {f
-//    artistName = req.body.searchInput
-//    arr.push(artistName)
-//    res.redirect('/')
-// })
-
 
 app.post('/results', (req,res) => {
 
@@ -55,12 +46,8 @@ app.post('/results', (req,res) => {
             chunks+=chunk;
         });
         response.on("end", function(){
-            // console.log("API Data recieved");
 
             res = JSON.parse(chunks);
-            //console.log(res.similarartists.artist[6].name)
-            // code after parse string into JSON format
-            // const len = res.similarartists.artist.name.length
 
             for(let i=0; i<30; i++)
             {
@@ -68,18 +55,13 @@ app.post('/results', (req,res) => {
                 links.push(res.similarartists.artist[i].url)
             }
            arr.toString
-           //apiData.push(arr)
-           //console.log("len is : " +len)
-           //console.log(apiData)
-
         });
         
-        //apiData.push(arr)
 });
   res.redirect('/results')
  })
 
 
-app.listen(3030, function(){
-    console.log("running at 3030")
+app.listen(port, function(){
+    console.log("running at "+port)
 })
