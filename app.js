@@ -16,13 +16,14 @@ let arr = []
 let links = []
 
 app.get('/', (req,res) => {
-    while(arr.length > 0) {
+        while(arr.length > 0) {
         arr.pop();
     }
 
     while(links.length > 0) {
         links.pop();
     }
+
         res.render('home')
 })
 
@@ -68,6 +69,6 @@ app.post('/results', (req,res) => {
  })
 
 
-app.listen(3030, function(){
-    console.log("running at 3030")
+app.listen(port, function(){
+    console.log("running at "+port)
 })
