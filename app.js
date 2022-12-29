@@ -62,6 +62,6 @@ app.post('/results', (req,res) => {
  })
 
 
-app.listen(port, function(){
-    console.log("running at "+port)
+app.listen(3030, function(){
+    console.log("running at 3030")
 })
