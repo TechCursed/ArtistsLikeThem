@@ -16,7 +16,13 @@ let arr = []
 let links = []
 
 app.get('/', (req,res) => {
-    
+    while(arr.length > 0) {
+        arr.pop();
+    }
+
+    while(links.length > 0) {
+        links.pop();
+    }
         res.render('home')
 })
 
