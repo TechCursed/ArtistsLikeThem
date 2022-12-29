@@ -5,4 +5,4 @@ function reloadIt() {
     }
 }
 
-setTimeout('reloadIt()', 1000)();
+setTimeout('reloadIt()', 2000)();
