@@ -42,7 +42,7 @@ app.post('/results', (req,res) => {
     }
 
     let api = process.env.API_KEY
-    artistName = req.body.searchInput
+    artistName = req.body.searchInput.trim()
     let url = `https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=${artistName}&api_key=${api}&format=json`
     
     https.get(url, function (response) { 
