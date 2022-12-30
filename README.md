@@ -7,3 +7,6 @@ Demo : <a href="artistslikethem.up.railway.app">artistslikethem.up.railway.app</
 
 <h2>2. Get the similar artists as result </h2>
 <img src="demo/result_ss.png">
+
+<h2>2. Explore similar artists</h2>
+<img src="demo/explore_ss.png">
